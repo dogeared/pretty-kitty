@@ -18,27 +18,9 @@ browser.storage.onChanged.addListener(function (changes) {
     })
 });
 
-
-// function onBeforeRequestListener(details) {
-//   console.log(details.url);
-//   // details.requestHeaders.push({})
-//   // return {
-//   //   redirectUrl: details.url.replace(/\?injected_param=uh_oh/g,'') + '?injected_param=uh_oh'
-//   // }
-//   return {}
-// }
-
-// function onBeforeSendHeadersListener(details) {
-//   console.log(details.requestHeaders);
-//   details.requestHeaders.push({name: 'x-bad-hacker', value: 'was-here'})
-//   return {
-//     requestHeaders: details.requestHeaders
-//   };
-// }
-
 browser.webRequest.onBeforeRequest.addListener(
   function (details) {
-    console.log(details.url);
+    console.log(details.url.replace(/\?injected_param=uh_oh/g,'') + '?injected_param=uh_oh');
     // details.requestHeaders.push({})
     // return {
     //   redirectUrl: details.url.replace(/\?injected_param=uh_oh/g,'') + '?injected_param=uh_oh'
@@ -51,8 +33,7 @@ browser.webRequest.onBeforeRequest.addListener(
 
 browser.webRequest.onBeforeSendHeaders.addListener(
   function (details) {
-    console.log(details.requestHeaders);
-    details.requestHeaders.push({name: 'x-bad-hacker', value: 'was-here'})
+    details.requestHeaders.push({name: 'x-nothing', value: 'to-see-here'})
     return {
       requestHeaders: details.requestHeaders
     };

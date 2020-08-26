@@ -8,7 +8,9 @@
     "32": "icons/cat-32.png"
   },
   "permissions": [
-    "*://*/*", "webRequest", "webRequestBlocking", "tabs", "storage"
+    "*://*/*", 
+    "webRequest", "webRequestBlocking", 
+    "tabs", "storage"
   ],
   "background": {
     "scripts": [

@@ -1,0 +1,31 @@
+{
+  "name": "pretty-kitty",
+  "description": "A Browser extension to show gifs of cats when you should be working",
+  "version": "0.1.1",
+  "scripts": {
+    "build": "web-ext build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dogeared/pretty-kitty.git"
+  },
+  "keywords": [
+    "leisure", "fun", "kitty", "cat"
+  ],
+  "author": "Micah Silverman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dogeared/pretty-kitty/issues"
+  },
+  "homepage": "https://github.com/dogeared/pretty-kitty#readme",
+  "webExt": {
+    "verbose": true,
+    "build": {
+      "overwriteDest": true
+    },
+    "ignoreFiles": [
+      "package.json",
+      "README.md"
+    ]
+  }
+}

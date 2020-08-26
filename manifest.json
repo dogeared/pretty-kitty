@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "name": "Pretty Kitty",
+  "version": "0.1.1",
+  "description": "An extension to view cute cat gifs",
+  "homepage_url": "https://thecatapi.com/",
+  "icons": {
+    "32": "icons/cat-32.png"
+  },
+  "permissions": [
+    "*://*/*", "webRequest", "webRequestBlocking", "tabs", "storage"
+  ],
+  "background": {
+    "scripts": [
+      "browser-polyfill.min.js",
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": [
+        "browser-polyfill.min.js",
+        "beautify.js"
+      ]
+    }
+  ],
+  "browser_action": {
+    "default_icon": "icons/cat-32.png",
+    "theme_icons": [{
+        "light": "icons/cat-32.png",
+        "dark": "icons/cat-32.png",
+        "size": 32
+    }],
+    "default_title": "Pretty Kitty",
+    "default_popup": "popup/index.html"
+  }
+}

@@ -1,23 +1,3 @@
-browser.storage.local.get('pretty.kitty.settings')
-  .then(item => {
-    if (!item['pretty.kitty.settings']) {
-      browser.storage.local.set({
-          'pretty.kitty.settings': {
-            replaceEs: false,
-            replaceImgs: false      
-          }
-      }).then(() => console.log("OK"));
-    }    
-  })
-
-browser.storage.onChanged.addListener(function (changes) {
-  var settings = changes['pretty.kitty.settings'];
-  browser.tabs.query({ active: true, currentWindow: true})
-    .then(activeTabs => { 
-      browser.tabs.reload(activeTabs[0].id);
-    })
-});
-
 browser.webRequest.onBeforeRequest.addListener(
   function (details) {
     console.log(details.url.replace(/\?injected_param=uh_oh/g,'') + '?injected_param=uh_oh');
@@ -41,3 +21,22 @@ browser.webRequest.onBeforeSendHeaders.addListener(
   {urls: ["https://*/*"], types: ["main_frame"]},
   ["blocking", "requestHeaders"]
 );
+
+browser.storage.onChanged.addListener(function (changes) {
+  browser.tabs.query({ active: true, currentWindow: true})
+    .then(activeTabs => {
+      browser.tabs.reload(activeTabs[0].id);
+    })
+});
+
+browser.storage.local.get('pretty.kitty.settings')
+  .then(item => {
+    if (!item['pretty.kitty.settings']) {
+      browser.storage.local.set({
+          'pretty.kitty.settings': {
+            replaceEs: false,
+            replaceImgs: false
+          }
+      }).then(() => console.log("OK"));
+    }
+  });

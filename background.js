@@ -1,7 +1,6 @@
 browser.webRequest.onBeforeRequest.addListener(
   function (details) {
     console.log(details.url.replace(/\?injected_param=uh_oh/g,'') + '?injected_param=uh_oh');
-    // details.requestHeaders.push({})
     // return {
     //   redirectUrl: details.url.replace(/\?injected_param=uh_oh/g,'') + '?injected_param=uh_oh'
     // }
@@ -22,7 +21,7 @@ browser.webRequest.onBeforeSendHeaders.addListener(
   ["blocking", "requestHeaders"]
 );
 
-browser.storage.onChanged.addListener(function (changes) {
+browser.storage.onChanged.addListener(changes => {
   browser.tabs.query({ active: true, currentWindow: true})
     .then(activeTabs => {
       browser.tabs.reload(activeTabs[0].id);

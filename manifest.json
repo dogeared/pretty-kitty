@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Pretty Kitty",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "An extension to view cute cat gifs",
   "homepage_url": "https://thecatapi.com/",
   "icons": {
